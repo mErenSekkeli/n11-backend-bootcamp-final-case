@@ -2,18 +2,53 @@ package com.merensekkeli.customerreviewservice.controller.contract.impl;
 
 import com.merensekkeli.customerreviewservice.controller.contract.CustomerControllerContract;
 import com.merensekkeli.customerreviewservice.dto.CustomerDTO;
+import com.merensekkeli.customerreviewservice.entity.Customer;
+import com.merensekkeli.customerreviewservice.mapper.CustomerMapper;
 import com.merensekkeli.customerreviewservice.request.CustomerSaveRequest;
+import com.merensekkeli.customerreviewservice.request.CustomerUpdateRequest;
+import com.merensekkeli.customerreviewservice.service.entityservice.CustomerEntityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 @Slf4j
 public class CustomerControllerContractImpl implements CustomerControllerContract {
 
+    private final CustomerEntityService customerEntityService;
+
     @Override
     public CustomerDTO saveCustomer(CustomerSaveRequest request) {
-        return null;
+        Customer customer = CustomerMapper.INSTANCE.convertToCustomer(request);
+        customer = customerEntityService.save(customer);
+        return CustomerMapper.INSTANCE.convertToCustomerDTO(customer);
+    }
+
+    @Override
+    public CustomerDTO getCustomerById(Long id) {
+        Customer customer = customerEntityService.findByIdWithControl(id);
+        return CustomerMapper.INSTANCE.convertToCustomerDTO(customer);
+    }
+
+    @Override
+    public List<CustomerDTO> getAllCustomers() {
+        List<Customer> customerList = customerEntityService.findAll();
+        return customerList.stream().map(CustomerMapper.INSTANCE::convertToCustomerDTO).toList();
+    }
+
+    @Override
+    public CustomerDTO updateCustomer(Long id, CustomerUpdateRequest request) {
+        Customer customer = customerEntityService.findByIdWithControl(id);
+
+        customer = customerEntityService.saveWithControl(customer, request);
+        return CustomerMapper.INSTANCE.convertToCustomerDTO(customer);
+    }
+
+    @Override
+    public void deleteCustomer(Long id) {
+        customerEntityService.delete(id);
     }
 }
