@@ -24,18 +24,21 @@ public class CustomerControllerContractImpl implements CustomerControllerContrac
     public CustomerDTO saveCustomer(CustomerSaveRequest request) {
         Customer customer = CustomerMapper.INSTANCE.convertToCustomer(request);
         customer = customerEntityService.save(customer);
+        log.info("Customer saved with id: {}", customer.getId());
         return CustomerMapper.INSTANCE.convertToCustomerDTO(customer);
     }
 
     @Override
     public CustomerDTO getCustomerById(Long id) {
         Customer customer = customerEntityService.findByIdWithControl(id);
+        log.info("Customer found with id: {}", customer.getId());
         return CustomerMapper.INSTANCE.convertToCustomerDTO(customer);
     }
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
         List<Customer> customerList = customerEntityService.findAll();
+        log.info("All customers found");
         return customerList.stream().map(CustomerMapper.INSTANCE::convertToCustomerDTO).toList();
     }
 
@@ -44,11 +47,13 @@ public class CustomerControllerContractImpl implements CustomerControllerContrac
         Customer customer = customerEntityService.findByIdWithControl(id);
 
         customer = customerEntityService.saveWithControl(customer, request);
+        log.info("Customer updated with id: {}", customer.getId());
         return CustomerMapper.INSTANCE.convertToCustomerDTO(customer);
     }
 
     @Override
     public void deleteCustomer(Long id) {
         customerEntityService.delete(id);
+        log.info("Customer deleted with id: {}", id);
     }
 }
