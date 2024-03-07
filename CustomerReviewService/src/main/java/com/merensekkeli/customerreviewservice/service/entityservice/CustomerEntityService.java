@@ -34,5 +34,4 @@ public class CustomerEntityService extends BaseEntityService<Customer, CustomerR
         }
         return getRepository().save(customer);
     }
-
 }
