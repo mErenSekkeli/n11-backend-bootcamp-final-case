@@ -1,6 +1,6 @@
 package com.merensekkeli.companyservice.general;
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.Embeddable;
 import lombok.Getter;
 import lombok.Setter;
 
