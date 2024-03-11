@@ -2,7 +2,7 @@ package com.merensekkeli.companyservice.entity;
 
 import com.merensekkeli.companyservice.enums.EnumStatus;
 import com.merensekkeli.companyservice.general.BaseEntity;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
