@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,9 +30,11 @@ public class CompanyControllerContractImpl implements CompanyControllerContract 
 
     @Override
     public List<CompanyDTO> getAllCompanies() {
-        List<Company> companyList = companyEntityService.findAll();
+        Iterable<Company> companyIterable = companyEntityService.findAll();
+        List<CompanyDTO> companyList = new ArrayList<>();
+        companyIterable.forEach(company -> companyList.add(CompanyMapper.INSTANCE.convertToCompanyDTO(company)));
         log.info("All companies found");
-        return companyList.stream().map(CompanyMapper.INSTANCE::convertToCompanyDTO).toList();
+        return companyList;
     }
 
     @Override
@@ -55,6 +58,13 @@ public class CompanyControllerContractImpl implements CompanyControllerContract 
     public void deleteCompany(Long id) {
         companyEntityService.delete(id);
         log.info("Company deleted with id: {}", id);
+    }
+
+    @Override
+    public List<CompanyDTO> findByNamed(String searchItem) {
+        List<Company> companyList = companyEntityService.findByNamed(searchItem);
+        log.info("Companies found with search item: {}", searchItem);
+        return companyList.stream().map(CompanyMapper.INSTANCE::convertToCompanyDTO).toList();
     }
 
 }

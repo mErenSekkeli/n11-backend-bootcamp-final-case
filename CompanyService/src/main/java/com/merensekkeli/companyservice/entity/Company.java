@@ -3,46 +3,48 @@ package com.merensekkeli.companyservice.entity;
 import com.merensekkeli.companyservice.enums.EnumStatus;
 import com.merensekkeli.companyservice.general.BaseEntity;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.solr.core.mapping.Indexed;
+import org.springframework.data.solr.core.mapping.SolrDocument;
 
-@Entity
-@Table(name = "company")
+
+@SolrDocument(collection = "company")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Company extends BaseEntity {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Company")
-    @SequenceGenerator(name = "Company", sequenceName = "COMPANY_ID_SEQ", allocationSize = 1)
     @Id
-    private Long id;
+    @Indexed(name = "id", type = "string")
+    private String id;
 
-    @Column(name = "name", nullable = false)
+    @Indexed(name = "name", type = "string")
     private String name;
 
-    @Column(name = "address", nullable = false)
+    @Indexed(name = "address", type = "string")
     private String address;
 
-    @Column(name = "phone", nullable = false, length = 15)
+    @Indexed(name = "phone", type = "string")
     private String phone;
 
-    @Column(name = "email")
+    @Indexed(name = "email", type = "string")
     private String email;
 
-    @Column(name = "website")
+    @Indexed(name = "website", type = "string")
     private String website;
 
-    @Column(name = "latitude", nullable = false)
+    @Indexed(name = "latitude", type = "pdouble")
     private Double latitude;
 
-    @Column(name = "longitude", nullable = false)
+    @Indexed(name = "longitude", type = "pdouble")
     private Double longitude;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
+    @Indexed(name = "status", type = "string")
     private EnumStatus status;
 }
