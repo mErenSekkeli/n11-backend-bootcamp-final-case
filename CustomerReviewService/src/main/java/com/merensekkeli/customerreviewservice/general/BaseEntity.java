@@ -1,7 +1,7 @@
 package com.merensekkeli.customerreviewservice.general;
 
-import jakarta.persistence.Embedded;
-import jakarta.persistence.MappedSuperclass;
+import javax.persistence.Embedded;
+import javax.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 

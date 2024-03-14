@@ -2,7 +2,7 @@ package com.merensekkeli.customerreviewservice.entity;
 
 import com.merensekkeli.customerreviewservice.enums.EnumStatus;
 import com.merensekkeli.customerreviewservice.general.BaseEntity;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
