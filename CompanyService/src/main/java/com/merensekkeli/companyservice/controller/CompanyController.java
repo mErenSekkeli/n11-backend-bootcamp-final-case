@@ -32,6 +32,11 @@ public class CompanyController {
         return ResponseEntity.ok(RestResponse.of(companyControllerContract.getCompanyById(id)));
     }
 
+    @GetMapping("/named")
+    public ResponseEntity<RestResponse<List<CompanyDTO>>> getCompanyByName(@RequestParam String searchItem) {
+        return ResponseEntity.ok(RestResponse.of(companyControllerContract.findByNamed(searchItem)));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<RestResponse<CompanyDTO>> updateCompany(@PathVariable Long id, @RequestBody CompanySaveRequest request) {
         return ResponseEntity.ok(RestResponse.of(companyControllerContract.updateCompany(id, request)));

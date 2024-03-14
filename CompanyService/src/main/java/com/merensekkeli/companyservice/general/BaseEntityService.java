@@ -1,13 +1,14 @@
 package com.merensekkeli.companyservice.general;
 
 import com.merensekkeli.companyservice.exception.ItemNotFoundException;
-import org.springframework.data.jpa.repository.JpaRepository;
+import lombok.Getter;
+import org.springframework.data.solr.repository.SolrCrudRepository;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
-public abstract class BaseEntityService<E extends BaseEntity, R extends JpaRepository<E, Long>> {
+@Getter
+public abstract class BaseEntityService<E extends BaseEntity, R extends SolrCrudRepository<E, Long>> {
 
     private final R repository;
 
@@ -34,7 +35,7 @@ public abstract class BaseEntityService<E extends BaseEntity, R extends JpaRepos
         return entity;
     }
 
-    public List<E> findAll() {
+    public Iterable<E> findAll() {
         return repository.findAll();
     }
 

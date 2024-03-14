@@ -16,4 +16,6 @@ public interface CompanyControllerContract {
     CompanyDTO updateCompany(Long id, CompanySaveRequest request);
 
     void deleteCompany(Long id);
+
+    List<CompanyDTO> findByNamed(String searchItem);
 }
