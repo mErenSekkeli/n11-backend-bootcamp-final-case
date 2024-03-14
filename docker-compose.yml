@@ -5,9 +5,9 @@ services:
     environment:
       POSTGRES_USER: erensekkeli
       POSTGRES_PASSWORD: 123456789
-      POSTGRES_DB: n11-company-service
     volumes:
-      - data-volume:/var/lib/postgresql/data
+      - db_volume:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
 
@@ -17,12 +17,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/n11-company-service
-      SPRING_DATASOURCE_USERNAME: erensekkeli
-      SPRING_DATASOURCE_PASSWORD: 123456789
     depends_on:
-      - postgres
+      - solr
 
   customerreviewservice:
     build:
@@ -30,12 +26,20 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/n11-customer-service
-      SPRING_DATASOURCE_USERNAME: erensekkeli
-      SPRING_DATASOURCE_PASSWORD: 123456789
     depends_on:
       - postgres
 
+  solr:
+    image: solr:latest
+    container_name: n11_solr
+    ports:
+      - "8983:8983"
+    volumes:
+      - ./solrdata:/var/solr
+    command:
+      - solr-precreate
+      - company
+
 volumes:
-  data-volume:
+  db_volume:
+  solrdata:
