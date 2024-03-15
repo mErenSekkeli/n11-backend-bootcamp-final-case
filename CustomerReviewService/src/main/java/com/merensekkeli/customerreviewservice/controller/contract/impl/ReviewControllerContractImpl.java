@@ -1,9 +1,13 @@
 package com.merensekkeli.customerreviewservice.controller.contract.impl;
 
+import com.merensekkeli.customerreviewservice.client.CompanyClient;
 import com.merensekkeli.customerreviewservice.controller.contract.ReviewControllerContract;
+import com.merensekkeli.customerreviewservice.dto.CompanyClientDTO;
 import com.merensekkeli.customerreviewservice.dto.ReviewDTO;
 import com.merensekkeli.customerreviewservice.entity.Customer;
 import com.merensekkeli.customerreviewservice.entity.Review;
+import com.merensekkeli.customerreviewservice.exception.ItemNotFoundException;
+import com.merensekkeli.customerreviewservice.exception.ReviewAlreadyExistException;
 import com.merensekkeli.customerreviewservice.mapper.ReviewMapper;
 import com.merensekkeli.customerreviewservice.request.ReviewSaveRequest;
 import com.merensekkeli.customerreviewservice.request.ReviewUpdateRequest;
@@ -22,9 +26,21 @@ public class ReviewControllerContractImpl implements ReviewControllerContract {
 
     private final ReviewEntityService reviewEntityService;
     private final CustomerEntityService customerEntityService;
+    private final CompanyClient companyClient;
 
     @Override
     public ReviewDTO saveReview(ReviewSaveRequest request) {
+        //check if customer already has a review for the product
+        if(reviewEntityService.existsByCustomerIdAndProductId(request.getCustomerId(), request.getCompanyId())){
+            throw new ReviewAlreadyExistException("Customer already has a review for the product with id: " +
+                    request.getCompanyId() + " and customer id: " + request.getCustomerId());
+        }
+        //check if company exist
+        CompanyClientDTO companyClientDTO = companyClient.getCompany(request.getCompanyId());
+        if(companyClientDTO == null){
+            throw new ItemNotFoundException("Company not found with id: " + request.getCompanyId());
+        }
+
         Review review = ReviewMapper.INSTANCE.convertToReview(request);
         review = reviewEntityService.save(review);
         log.info("Review saved with id: {}", review.getId());

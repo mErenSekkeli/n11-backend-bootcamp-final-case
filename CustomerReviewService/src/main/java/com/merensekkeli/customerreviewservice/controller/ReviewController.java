@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class ReviewController {
     private final ReviewControllerContract reviewControllerContract;
 
     @PostMapping
-    public ResponseEntity<RestResponse<ReviewDTO>> saveReview(@RequestBody ReviewSaveRequest request) {
+    public ResponseEntity<RestResponse<ReviewDTO>> saveReview(@Valid @RequestBody ReviewSaveRequest request) {
         return ResponseEntity.ok(RestResponse.of(reviewControllerContract.saveReview(request)));
     }
 

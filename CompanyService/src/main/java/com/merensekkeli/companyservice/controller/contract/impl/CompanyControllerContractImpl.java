@@ -38,14 +38,14 @@ public class CompanyControllerContractImpl implements CompanyControllerContract 
     }
 
     @Override
-    public CompanyDTO getCompanyById(Long id) {
-        Company company = companyEntityService.findByIdWithControl(id);
-        log.info("Company found with id: {}", company.getId());
-        return CompanyMapper.INSTANCE.convertToCompanyDTO(company);
+    public List<CompanyDTO> getAllActiveCompanies() {
+        List<Company> companyList = companyEntityService.findAllActive();
+        log.info("All active companies found");
+        return companyList.stream().map(CompanyMapper.INSTANCE::convertToCompanyDTO).toList();
     }
 
     @Override
-    public CompanyDTO updateCompany(Long id, CompanySaveRequest request) {
+    public CompanyDTO updateCompany(String id, CompanySaveRequest request) {
         Company company = companyEntityService.findByIdWithControl(id);
         CompanyMapper.INSTANCE.updateCompanyFields(company, request);
 
@@ -55,7 +55,7 @@ public class CompanyControllerContractImpl implements CompanyControllerContract 
     }
 
     @Override
-    public void deleteCompany(Long id) {
+    public void deleteCompany(String id) {
         companyEntityService.delete(id);
         log.info("Company deleted with id: {}", id);
     }
@@ -65,6 +65,20 @@ public class CompanyControllerContractImpl implements CompanyControllerContract 
         List<Company> companyList = companyEntityService.findByNamed(searchItem);
         log.info("Companies found with search item: {}", searchItem);
         return companyList.stream().map(CompanyMapper.INSTANCE::convertToCompanyDTO).toList();
+    }
+
+    @Override
+    public List<CompanyDTO> findByProperty(String searchItem) {
+        List<Company> company = companyEntityService.findByProperties(searchItem);
+        log.info("Company found with search item: {}", searchItem);
+        return company.stream().map(CompanyMapper.INSTANCE::convertToCompanyDTO).toList();
+    }
+
+    @Override
+    public CompanyDTO getCompanyById(String id) {
+        Company company = companyEntityService.findByIdWithControl(id);
+        log.info("Company found with id: {}", id);
+        return CompanyMapper.INSTANCE.convertToCompanyDTO(company);
     }
 
 }

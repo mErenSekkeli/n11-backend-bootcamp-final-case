@@ -10,9 +10,7 @@ BEGIN
 END
 $do$;
 
-CREATE DATABASE "n11-company-service";
 
 CREATE DATABASE "n11-customer-service";
 
-GRANT ALL PRIVILEGES ON DATABASE "n11-company-service" TO erensekkeli;
 GRANT ALL PRIVILEGES ON DATABASE "n11-customer-service" TO erensekkeli;

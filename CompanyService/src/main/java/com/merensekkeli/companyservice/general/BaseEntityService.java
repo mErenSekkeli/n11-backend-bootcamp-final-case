@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Getter
-public abstract class BaseEntityService<E extends BaseEntity, R extends SolrCrudRepository<E, Long>> {
+public abstract class BaseEntityService<E extends BaseEntity, R extends SolrCrudRepository<E, String>> {
 
     private final R repository;
 
@@ -39,7 +39,7 @@ public abstract class BaseEntityService<E extends BaseEntity, R extends SolrCrud
         return repository.findAll();
     }
 
-    public E findByIdWithControl(Long id) {
+    public E findByIdWithControl(String id) {
         Optional<E> optionalE = repository.findById(id);
         if (optionalE.isPresent()) {
             return optionalE.get();
@@ -48,11 +48,11 @@ public abstract class BaseEntityService<E extends BaseEntity, R extends SolrCrud
         }
     }
 
-    public Optional<E> findById(Long id){
+    public Optional<E> findById(String id){
         return repository.findById(id);
     }
 
-    public void delete(Long id) {
+    public void delete(String id) {
         repository.deleteById(id);
     }
 }

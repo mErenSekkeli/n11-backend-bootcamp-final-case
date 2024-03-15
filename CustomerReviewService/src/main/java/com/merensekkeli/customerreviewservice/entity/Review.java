@@ -25,9 +25,10 @@ public class Review extends BaseEntity {
     private Long customerId;
 
     @Column(name = "company_id", nullable = false)
-    private Long companyId;
+    private String companyId;
 
     @Column(name = "rate", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
     private EnumRate rate;
 
     @Column(name = "comment", length = 500)
