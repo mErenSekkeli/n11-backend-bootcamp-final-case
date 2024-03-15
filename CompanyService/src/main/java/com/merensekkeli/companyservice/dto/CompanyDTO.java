@@ -3,6 +3,7 @@ package com.merensekkeli.companyservice.dto;
 import com.merensekkeli.companyservice.enums.EnumStatus;
 
 public record CompanyDTO(
+        String id,
         String name,
         String address,
         String phone,

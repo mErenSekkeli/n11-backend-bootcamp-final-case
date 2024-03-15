@@ -11,11 +11,15 @@ public interface CompanyControllerContract {
 
     List<CompanyDTO> getAllCompanies();
 
-    CompanyDTO getCompanyById(Long id);
+    List<CompanyDTO> getAllActiveCompanies();
 
-    CompanyDTO updateCompany(Long id, CompanySaveRequest request);
+    CompanyDTO updateCompany(String id, CompanySaveRequest request);
 
-    void deleteCompany(Long id);
+    void deleteCompany(String id);
 
     List<CompanyDTO> findByNamed(String searchItem);
+
+    List<CompanyDTO> findByProperty(String searchItem);
+
+    CompanyDTO getCompanyById(String id);
 }

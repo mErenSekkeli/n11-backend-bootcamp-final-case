@@ -4,13 +4,10 @@ import com.merensekkeli.customerreviewservice.dto.CustomerDTO;
 import com.merensekkeli.customerreviewservice.entity.Customer;
 import com.merensekkeli.customerreviewservice.request.CustomerSaveRequest;
 import com.merensekkeli.customerreviewservice.request.CustomerUpdateRequest;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE, componentModel = "spring")
 public interface CustomerMapper {
 
     CustomerMapper INSTANCE = Mappers.getMapper(CustomerMapper.class);
@@ -20,4 +17,7 @@ public interface CustomerMapper {
 
     CustomerDTO convertToCustomerDTO(Customer customer);
 
+
+    @Mapping(target = "id", ignore = true)
+    void updateCustomerFields(@MappingTarget Customer customer, CustomerUpdateRequest request);
 }

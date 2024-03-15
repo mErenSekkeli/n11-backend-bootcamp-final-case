@@ -6,10 +6,10 @@ services:
       POSTGRES_USER: erensekkeli
       POSTGRES_PASSWORD: 123456789
     volumes:
-      - db_volume:/var/lib/postgresql/data
+      - postgre_db:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "5432:5432"
+      - "5433:5432"
 
   companyservice:
     build:
@@ -41,5 +41,6 @@ services:
       - company
 
 volumes:
-  db_volume:
+  postgre_db:
+    driver: local
   solrdata:
