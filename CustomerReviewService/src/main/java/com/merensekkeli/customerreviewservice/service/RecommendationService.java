@@ -15,10 +15,10 @@ public class RecommendationService {
 
 
         return allRestaurants.stream()
-                .filter(company -> distance(customer.getLatitude(), customer.getLongitude(), company.latitude(), company.longitude()) <= 10.0) // 10 km limit
+                .filter(company -> distance(customer.getLatitude(), customer.getLongitude(), company.getLatitude(), company.getLongitude()) <= 10.0) // 10 km limit
                 .sorted((c1, c2) -> {
-                    double score1 = calculateScore(customer, companyRatings.get(c1.id()), c1);
-                    double score2 = calculateScore(customer, companyRatings.get(c2.id()), c2);
+                    double score1 = calculateScore(customer, companyRatings.get(c1.getId()), c1);
+                    double score2 = calculateScore(customer, companyRatings.get(c2.getId()), c2);
                     return Double.compare(score2, score1); // higher score first
                 })
                 .limit(3)
@@ -38,8 +38,8 @@ public class RecommendationService {
     }
 
     private double calculateScore(Customer customer, double companyRating, CompanyClientDTO company){
-        double distance = distance(customer.getLatitude(), customer.getLongitude(), company.latitude(), company.longitude());
-        double distanceScore = (10.0 - distance) / 10.0;
-        return companyRating * 0.7 + distanceScore * 0.3;
+        double distance = distance(customer.getLatitude(), customer.getLongitude(), company.getLatitude(), company.getLongitude());
+        double distanceScore = (10.0 - distance) / 10.0; // 10 km limit
+        return companyRating * 0.7 + distanceScore * 0.3; // 70% rating, 30% distance
     }
 }

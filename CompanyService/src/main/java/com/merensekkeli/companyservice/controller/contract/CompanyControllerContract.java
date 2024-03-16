@@ -22,4 +22,6 @@ public interface CompanyControllerContract {
     List<CompanyDTO> findByProperty(String searchItem);
 
     CompanyDTO getCompanyById(String id);
+
+    CompanyDTO getCompanyByIdOuther(String id);
 }

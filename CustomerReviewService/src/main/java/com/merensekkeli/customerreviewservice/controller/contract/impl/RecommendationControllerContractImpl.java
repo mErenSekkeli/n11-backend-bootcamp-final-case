@@ -31,7 +31,10 @@ public class RecommendationControllerContractImpl implements RecommendationContr
             throw new ItemNotFoundException("Customer not found with id: " + id);
         }
         List<CompanyClientDTO> activeCompanies = companyClient.getCompanies();
-        Map<String, Double> companyRatings = reviewEntityService.getCompanyRatings(activeCompanies.stream().map(CompanyClientDTO::id).toList());
+        Map<String, Double> companyRatings = reviewEntityService.getCompanyRatings(activeCompanies.stream().map(CompanyClientDTO::getId).toList());
+        //fill the average ratings for the companies
+        activeCompanies.forEach(company -> company.setAverageRate(companyRatings.get(company.getId())));
+
         return recommendationService.recommendRestaurants(activeCompanies, customer.get(), companyRatings);
     }
 }
