@@ -8,6 +8,7 @@ import com.merensekkeli.customerreviewservice.entity.Customer;
 import com.merensekkeli.customerreviewservice.entity.Review;
 import com.merensekkeli.customerreviewservice.exception.ItemNotFoundException;
 import com.merensekkeli.customerreviewservice.exception.ReviewAlreadyExistException;
+import com.merensekkeli.customerreviewservice.general.KafkaProducerService;
 import com.merensekkeli.customerreviewservice.mapper.ReviewMapper;
 import com.merensekkeli.customerreviewservice.request.ReviewSaveRequest;
 import com.merensekkeli.customerreviewservice.request.ReviewUpdateRequest;
@@ -15,9 +16,11 @@ import com.merensekkeli.customerreviewservice.service.entityservice.CustomerEnti
 import com.merensekkeli.customerreviewservice.service.entityservice.ReviewEntityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +30,9 @@ public class ReviewControllerContractImpl implements ReviewControllerContract {
     private final ReviewEntityService reviewEntityService;
     private final CustomerEntityService customerEntityService;
     private final CompanyClient companyClient;
+    private final KafkaProducerService kafkaProducerService;
+    @Value("${application.name}")
+    private String appName;
 
     @Override
     public ReviewDTO saveReview(ReviewSaveRequest request) {
@@ -44,6 +50,7 @@ public class ReviewControllerContractImpl implements ReviewControllerContract {
         Review review = ReviewMapper.INSTANCE.convertToReview(request);
         review = reviewEntityService.save(review);
         log.info("Review saved with id: {}", review.getId());
+        kafkaProducerService.sendMessage("infoLog", appName, "Review saved with id: " + review.getId());
         Customer customer = customerEntityService.findByIdWithControl(request.getCustomerId());
         return ReviewMapper.INSTANCE.convertToReviewDTO(review, customer);
     }
@@ -72,13 +79,20 @@ public class ReviewControllerContractImpl implements ReviewControllerContract {
 
         review = reviewEntityService.saveWithControl(review, request);
         log.info("Review updated with id: {}", review.getId());
+        kafkaProducerService.sendMessage("infoLog", appName, "Review updated with id: " + review.getId());
         Customer customer = customerEntityService.findByIdWithControl(review.getCustomerId());
         return ReviewMapper.INSTANCE.convertToReviewDTO(review, customer);
     }
 
     @Override
     public void deleteReview(Long id) {
+        Optional<Review> review = reviewEntityService.findById(id);
+        if (review.isEmpty()) {
+            log.error("Review not found with id: {}", id);
+            throw new ItemNotFoundException("Review not found with id: " + id);
+        }
         reviewEntityService.delete(id);
+        kafkaProducerService.sendMessage("infoLog", appName, "Review deleted with id: " + id);
         log.info("Review deleted with id: {}", id);
     }
 }

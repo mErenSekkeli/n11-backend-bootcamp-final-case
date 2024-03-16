@@ -2,6 +2,8 @@ package com.merensekkeli.customerreviewservice.general;
 
 import com.merensekkeli.customerreviewservice.exception.ItemNotFoundException;
 import com.merensekkeli.customerreviewservice.exception.ReviewAlreadyExistException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +18,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @ControllerAdvice
+@RequiredArgsConstructor
 public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
 
+    private final KafkaProducerService kafkaProducerService;
+    @Value("${application.name}")
+    private String appName;
     @ExceptionHandler
     public final ResponseEntity<Object> handleAllExceptions(Exception e, WebRequest request) {
 
@@ -26,7 +32,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
 
         var generalErrorMessages = new GeneralErrorMessages(LocalDateTime.now(), message, description);
         var restResponse = RestResponse.error(generalErrorMessages);
-
+        kafkaProducerService.sendMessage("errorLog", appName, message);
         return new ResponseEntity<>(restResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -38,7 +44,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
 
         var generalErrorMessages = new GeneralErrorMessages(LocalDateTime.now(), message, description);
         var restResponse = RestResponse.error(generalErrorMessages);
-
+        kafkaProducerService.sendMessage("errorLog", appName, message);
         return new ResponseEntity<>(restResponse, HttpStatus.NOT_FOUND);
     }
 
@@ -58,7 +64,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
 
         var generalErrorMessages = new GeneralErrorMessages(LocalDateTime.now(), message, description);
         var restResponse = RestResponse.error(generalErrorMessages);
-
+        kafkaProducerService.sendMessage("errorLog", appName, message);
         return new ResponseEntity<>(restResponse, HttpStatus.BAD_REQUEST);
     }
 
@@ -70,7 +76,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
 
         var generalErrorMessages = new GeneralErrorMessages(LocalDateTime.now(), message, description);
         var restResponse = RestResponse.error(generalErrorMessages);
-
+        kafkaProducerService.sendMessage("errorLog", appName, message);
         return new ResponseEntity<>(restResponse, HttpStatus.BAD_REQUEST);
     }
 
