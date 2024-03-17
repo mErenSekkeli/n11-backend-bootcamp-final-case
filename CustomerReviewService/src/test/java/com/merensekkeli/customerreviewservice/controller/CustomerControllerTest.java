@@ -68,6 +68,7 @@ public class CustomerControllerTest extends BaseControllerTest{
         request.setLongitude(-74.005974);
 
         CustomerDTO mockCustomerDTO = new CustomerDTO(
+                1L,
                 "John",
                 "Doe",
                 LocalDate.of(1990, 1, 1),
@@ -120,6 +121,7 @@ public class CustomerControllerTest extends BaseControllerTest{
     void shouldGetCustomerByIdSuccessfully() throws Exception {
         long id = 1L;
         CustomerDTO mockCustomerDTO = new CustomerDTO(
+                id,
                 "John",
                 "Doe",
                 LocalDate.of(1990, 1, 1),
@@ -173,6 +175,7 @@ public class CustomerControllerTest extends BaseControllerTest{
         request.setStatus(EnumStatus.ACTIVE);
 
         CustomerDTO mockCustomerDTO = new CustomerDTO(
+                id,
                 "John",
                 "Doe",
                 LocalDate.of(1990, 1, 1),
