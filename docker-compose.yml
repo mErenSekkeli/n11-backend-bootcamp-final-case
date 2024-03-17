@@ -72,6 +72,15 @@ services:
     depends_on:
       - postgres
       - kafka
+      
+  frontend:
+    build: ./customer-service-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - postgres
+      - companyservice
+      - customerreviewservice
 
 volumes:
   postgre_n11_db:
