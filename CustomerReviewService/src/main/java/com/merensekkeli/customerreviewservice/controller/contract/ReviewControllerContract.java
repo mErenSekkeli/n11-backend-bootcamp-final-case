@@ -17,4 +17,7 @@ public interface ReviewControllerContract {
     ReviewDTO updateReview(Long id, ReviewUpdateRequest request);
 
     void deleteReview(Long id);
+
+    List<ReviewDTO> getReviewsByUserId(Long userId);
+
 }
