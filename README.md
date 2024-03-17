@@ -75,6 +75,9 @@ docker-compose up -d
 * **Docker Notes**:
    * This project built on windows. So I have to change main base url **localhost** to **host.docker.internal**. If you are using a different operating system, you may need to change the base url in the services.
      * You can use **localhost** for swagger-ui or frontend project.
+    
+* **Database Notes**:
+   * You can use Solr db for CompanyService in the [solrdata](https://github.com/mErenSekkeli/n11-backend-bootcamp-final-case/tree/main/solrdata). Also you can use Postgresql data's in the (init.sql)[https://github.com/mErenSekkeli/n11-backend-bootcamp-final-case/blob/main/init.sql]. Thus you can test all services with ready data. When you run docker-compose, it will create all data's automatically.
 * **Swagger UI**:
   * You can access the Swagger UI for the backend services using the following URLs:
     * **CustomerReviewService**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
