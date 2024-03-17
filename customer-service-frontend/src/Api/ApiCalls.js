@@ -3,8 +3,8 @@ import axios from 'axios';
 const COMPANY_API_BASE_URL = 'http://localhost:8081/api/v1/companies';
 
 export const saveCustomer = (customerData) => {
-        const response = axios.post('/api/v1/customer', customerData);
-        return response;
+    const response = axios.post('/api/v1/customer', customerData);
+    return response;
 };
 
 export const getAllCustomers = () => {

@@ -10,7 +10,7 @@ function CompanyForm({ onSave }) {
         website: '',
         latitude: 0,
         longitude: 0,
-        status: 'ACTIVE' // Varsayılan bir değer
+        status: 'ACTIVE'
     });
 
     const handleChange = (event) => {
@@ -57,6 +57,7 @@ function CompanyForm({ onSave }) {
                     value={company.phone}
                     onChange={handleChange}
                     placeholder="+905555555555"
+                    required
                     pattern="^\+(?:[0-9]●?){6,14}[0-9]$"
                 />
             </Form.Group>
