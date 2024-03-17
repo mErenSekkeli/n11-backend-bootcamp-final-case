@@ -73,7 +73,7 @@ docker-compose up -d
   * 9092: Kafka
   * 2181: Zookeeper
 * **Docker Notes**:
-   * This project built on windows. So I have to change main base url **localhost** to **host.docker.internal**. If you are using a different operating system, you may need to change the base url in the services.
+   * This project built on windows 10 os. So I had to change main base url **localhost** to **host.docker.internal**. If you are using a different operating system, you may need to change the base url in the services.
      * You can use **localhost** for swagger-ui or frontend project.
     
 * **Database Notes**:
