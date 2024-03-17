@@ -1,39 +1,71 @@
-2024-03-17 17:08:09.907 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server jetty-10.0.19; built: 2023-12-15T20:38:32.477Z; git: 8492d1c78f122bb30cce20aecfa07e7283facd47; jvm 17.0.10+7
-2024-03-17 17:08:10.579 WARN  (main) [c: s: r: x: t:] o.e.j.u.DeprecationWarning Using @Deprecated Class org.eclipse.jetty.servlet.listener.ELContextCleaner
-2024-03-17 17:08:10.622 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2024-03-17 17:08:10.633 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.5.0
-2024-03-17 17:08:10.633 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in standalone mode on port 8983
-2024-03-17 17:08:10.633 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /opt/solr-9.5.0
-2024-03-17 17:08:10.633 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2024-03-17T17:08:10.633828700Z
-2024-03-17 17:08:10.640 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr started with "-XX:+CrashOnOutOfMemoryError" that will crash on any OutOfMemoryError exception. The cause of the OOME will be logged in the crash file at the following path: /var/solr/logs/jvm_crash_12.log
-2024-03-17 17:08:10.679 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr Home: /var/solr/data (source: system property: solr.solr.home)
-2024-03-17 17:08:10.732 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig solr.xml not found in SOLR_HOME, using built-in default
-2024-03-17 17:08:10.732 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig Loading solr.xml from /opt/solr-9.5.0/server/solr/solr.xml
-2024-03-17 17:08:10.818 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrResourceLoader Added 1 libs to classloader, from paths: [/opt/solr-9.5.0/lib]
-2024-03-17 17:08:12.662 INFO  (main) [c: s: r: x: t:] o.a.s.u.t.SimplePropagator Always-on trace id generation enabled.
-2024-03-17 17:08:13.472 WARN  (main) [c: s: r: x: t:] o.a.s.u.StartupLoggingUtils Jetty request logging enabled. Will retain logs for last 3 days. See chapter "Configuring Logging" in reference guide for how to configure.
-2024-03-17 17:08:13.536 WARN  (main) [c: s: r: x: t:] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
-2024-03-17 17:08:16.691 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath /var/solr/data
-2024-03-17 17:08:16.692 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Cores are: [company]
-2024-03-17 17:08:16.907 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.c.SolrConfig Using Lucene MatchVersion: 9.9.0
-2024-03-17 17:08:17.233 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.s.IndexSchema Schema name=default-config
-2024-03-17 17:08:17.304 WARN  (main) [c: s: r: x: t:] o.g.j.m.i.MessagingBinders A class jakarta.activation.DataSource for a default provider MessageBodyWriter<jakarta.activation.DataSource> was not found. The provider is not available.
-2024-03-17 17:08:18.020 INFO  (main) [c: s: r: x: t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
-2024-03-17 17:08:18.304 INFO  (main) [c: s: r: x: t:] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@21362712{solr-jetty-context.xml,/solr,file:///opt/solr-9.5.0/server/solr-webapp/webapp/,AVAILABLE}{/opt/solr-9.5.0/server/solr-webapp/webapp}
-2024-03-17 17:08:18.365 INFO  (main) [c: s: r: x: t:] o.e.j.s.RequestLogWriter Opened /var/solr/logs/2024_03_17.request.log
-2024-03-17 17:08:18.375 INFO  (main) [c: s: r: x: t:] o.e.j.s.AbstractConnector Started ServerConnector@666b83a4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
-2024-03-17 17:08:18.380 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server Started Server@3e8f7922{STARTING}[10.0.19,sto=0] @12009ms
-2024-03-17 17:08:18.753 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
-2024-03-17 17:08:18.753 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.c.CoreContainer Creating SolrCore 'company' using configuration from instancedir /var/solr/data/company, trusted=true
-2024-03-17 17:08:18.836 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.c.SolrCore Opening new SolrCore at [/var/solr/data/company], dataDir=[/var/solr/data/company/data/]
-2024-03-17 17:08:22.737 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
-2024-03-17 17:08:22.767 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
-2024-03-17 17:08:22.768 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
-2024-03-17 17:08:23.177 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.u.CommitTracker Hard AutoCommit: if uncommitted for 15000ms; 
-2024-03-17 17:08:23.177 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.u.CommitTracker Soft AutoCommit: if uncommitted for 3000ms; 
-2024-03-17 17:08:28.447 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /var/solr/data/company/conf
-2024-03-17 17:08:28.483 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.s.DirectSolrSpellChecker init: {maxEdits=2, minPrefix=1, maxInspections=5, minQueryLength=4, accuracy=0.5, maxQueryFrequency=0.01, name=default, field=_text_, classname=solr.DirectSolrSpellChecker, distanceMeasure=internal}
-2024-03-17 17:08:28.494 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.h.ReplicationHandler Commits will be reserved for 10000 ms
-2024-03-17 17:08:28.497 INFO  (searcherExecutor-13-thread-1-processing-company) [c: s: r: x:company t:] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2024-03-17 17:08:28.497 INFO  (searcherExecutor-13-thread-1-processing-company) [c: s: r: x:company t:] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
-2024-03-17 17:08:28.508 INFO  (searcherExecutor-13-thread-1-processing-company) [c: s: r: x:company t:] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
+2024-03-17 19:25:55.281 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server jetty-10.0.19; built: 2023-12-15T20:38:32.477Z; git: 8492d1c78f122bb30cce20aecfa07e7283facd47; jvm 17.0.10+7
+2024-03-17 19:25:58.422 WARN  (main) [c: s: r: x: t:] o.e.j.u.DeprecationWarning Using @Deprecated Class org.eclipse.jetty.servlet.listener.ELContextCleaner
+2024-03-17 19:25:58.678 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2024-03-17 19:25:58.726 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.5.0
+2024-03-17 19:25:58.726 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in standalone mode on port 8983
+2024-03-17 19:25:58.727 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: /opt/solr-9.5.0
+2024-03-17 19:25:58.730 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2024-03-17T19:25:58.730350500Z
+2024-03-17 19:25:58.766 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr started with "-XX:+CrashOnOutOfMemoryError" that will crash on any OutOfMemoryError exception. The cause of the OOME will be logged in the crash file at the following path: /var/solr/logs/jvm_crash_12.log
+2024-03-17 19:25:59.063 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr Home: /var/solr/data (source: system property: solr.solr.home)
+2024-03-17 19:25:59.261 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig solr.xml not found in SOLR_HOME, using built-in default
+2024-03-17 19:25:59.261 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig Loading solr.xml from /opt/solr-9.5.0/server/solr/solr.xml
+2024-03-17 19:25:59.601 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrResourceLoader Added 1 libs to classloader, from paths: [/opt/solr-9.5.0/lib]
+2024-03-17 19:26:06.720 INFO  (main) [c: s: r: x: t:] o.a.s.u.t.SimplePropagator Always-on trace id generation enabled.
+2024-03-17 19:26:08.878 WARN  (main) [c: s: r: x: t:] o.a.s.u.StartupLoggingUtils Jetty request logging enabled. Will retain logs for last 3 days. See chapter "Configuring Logging" in reference guide for how to configure.
+2024-03-17 19:26:08.936 WARN  (main) [c: s: r: x: t:] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
+2024-03-17 19:26:13.034 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath /var/solr/data
+2024-03-17 19:26:13.039 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Cores are: [company]
+2024-03-17 19:26:13.746 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.c.SolrConfig Using Lucene MatchVersion: 9.9.0
+2024-03-17 19:26:14.671 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.s.IndexSchema Schema name=default-config
+2024-03-17 19:26:15.092 WARN  (main) [c: s: r: x: t:] o.g.j.m.i.MessagingBinders A class jakarta.activation.DataSource for a default provider MessageBodyWriter<jakarta.activation.DataSource> was not found. The provider is not available.
+2024-03-17 19:26:16.538 INFO  (main) [c: s: r: x: t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
+2024-03-17 19:26:17.230 INFO  (main) [c: s: r: x: t:] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@21362712{solr-jetty-context.xml,/solr,file:///opt/solr-9.5.0/server/solr-webapp/webapp/,AVAILABLE}{/opt/solr-9.5.0/server/solr-webapp/webapp}
+2024-03-17 19:26:17.379 INFO  (main) [c: s: r: x: t:] o.e.j.s.RequestLogWriter Opened /var/solr/logs/2024_03_17.request.log
+2024-03-17 19:26:17.433 INFO  (main) [c: s: r: x: t:] o.e.j.s.AbstractConnector Started ServerConnector@666b83a4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
+2024-03-17 19:26:17.453 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server Started Server@3e8f7922{STARTING}[10.0.19,sto=0] @35844ms
+2024-03-17 19:26:17.980 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2024-03-17 19:26:17.981 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.c.CoreContainer Creating SolrCore 'company' using configuration from instancedir /var/solr/data/company, trusted=true
+2024-03-17 19:26:18.170 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.c.SolrCore Opening new SolrCore at [/var/solr/data/company], dataDir=[/var/solr/data/company/data/]
+2024-03-17 19:26:24.377 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
+2024-03-17 19:26:24.467 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2024-03-17 19:26:24.467 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2024-03-17 19:26:25.273 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.u.CommitTracker Hard AutoCommit: if uncommitted for 15000ms; 
+2024-03-17 19:26:25.276 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.u.CommitTracker Soft AutoCommit: if uncommitted for 3000ms; 
+2024-03-17 19:26:34.995 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /var/solr/data/company/conf
+2024-03-17 19:26:35.038 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.s.DirectSolrSpellChecker init: {name=default, field=_text_, classname=solr.DirectSolrSpellChecker, distanceMeasure=internal, accuracy=0.5, maxQueryFrequency=0.01, maxEdits=2, minPrefix=1, maxInspections=5, minQueryLength=4}
+2024-03-17 19:26:35.061 INFO  (coreLoadExecutor-11-thread-1) [c: s: r: x:company t:] o.a.s.h.ReplicationHandler Commits will be reserved for 10000 ms
+2024-03-17 19:26:35.068 INFO  (searcherExecutor-13-thread-1-processing-company) [c: s: r: x:company t:] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2024-03-17 19:26:35.068 INFO  (searcherExecutor-13-thread-1-processing-company) [c: s: r: x:company t:] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2024-03-17 19:26:35.090 INFO  (searcherExecutor-13-thread-1-processing-company) [c: s: r: x:company t:] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
+2024-03-17 19:37:52.794 INFO  (qtp1415289182-20-null-1) [c: s: r: x:company t:null-1] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=318
+2024-03-17 19:37:52.911 INFO  (qtp1415289182-26-null-2) [c: s: r: x:company t:null-2] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=27
+2024-03-17 19:38:18.685 INFO  (qtp1415289182-23-null-3) [c: s: r: x:company t:null-3] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=6
+2024-03-17 19:38:18.700 INFO  (qtp1415289182-27-null-4) [c: s: r: x:company t:null-4] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=8
+2024-03-17 19:38:18.729 INFO  (qtp1415289182-23-null-5) [c: s: r: x:company t:null-5] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=0
+2024-03-17 19:38:18.739 INFO  (qtp1415289182-27-null-6) [c: s: r: x:company t:null-6] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=1
+2024-03-17 19:50:12.650 INFO  (qtp1415289182-20-null-7) [c: s: r: x:company t:null-7] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=1
+2024-03-17 19:50:12.716 INFO  (qtp1415289182-24-null-8) [c: s: r: x:company t:null-8] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=3
+2024-03-17 19:50:12.930 INFO  (qtp1415289182-23-null-9) [c: s: r: x:company t:null-9] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=1
+2024-03-17 19:50:12.939 INFO  (qtp1415289182-26-null-10) [c: s: r: x:company t:null-10] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=1
+2024-03-17 20:03:39.321 INFO  (qtp1415289182-25-null-11) [c: s: r: x:company t:null-11] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=8
+2024-03-17 20:03:39.357 INFO  (qtp1415289182-21-null-12) [c: s: r: x:company t:null-12] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=20
+2024-03-17 20:03:59.775 INFO  (qtp1415289182-24-null-13) [c: s: r: x:company t:null-13] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=17
+2024-03-17 20:03:59.811 INFO  (qtp1415289182-22-null-14) [c: s: r: x:company t:null-14] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=16
+2024-03-17 20:04:18.837 INFO  (qtp1415289182-24-null-15) [c: s: r: x:company t:null-15] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=7
+2024-03-17 20:04:18.851 INFO  (qtp1415289182-22-null-16) [c: s: r: x:company t:null-16] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=5
+2024-03-17 20:04:23.388 INFO  (qtp1415289182-24-null-17) [c: s: r: x:company t:null-17] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=23
+2024-03-17 20:04:23.404 INFO  (qtp1415289182-22-null-18) [c: s: r: x:company t:null-18] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=7
+2024-03-17 20:05:00.387 INFO  (qtp1415289182-24-null-19) [c: s: r: x:company t:null-19] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=1
+2024-03-17 20:05:00.422 INFO  (qtp1415289182-22-null-20) [c: s: r: x:company t:null-20] o.a.s.c.S.Request webapp=/solr path=/select params={q=*:*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=1
+2024-03-17 20:05:08.008 INFO  (qtp1415289182-24-null-21) [c: s: r: x:company t:null-21] o.a.s.c.S.Request webapp=/solr path=/select params={q=id:8b0b253b\-3e83\-475b\-803d\-566d289c0f65&start=0&rows=1&wt=javabin&version=2} hits=1 status=0 QTime=78
+2024-03-17 20:05:25.072 INFO  (qtp1415289182-22-null-22) [c: s: r: x:company t:null-22] o.a.s.c.S.Request webapp=/solr path=/select params={q=id:8b0b253b\-3e83\-475b\-803d\-566d289c0f65&start=0&rows=1&wt=javabin&version=2} hits=1 status=0 QTime=1
+2024-03-17 20:05:25.986 INFO  (qtp1415289182-24-null-23) [c: s: r: x:company t:null-23] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={wt=javabin&version=2}{add=[8b0b253b-3e83-475b-803d-566d289c0f65 (1793805176324227072)]} 0 887
+2024-03-17 20:05:33.746 INFO  (searcherExecutor-13-thread-1-processing-company null-24) [c: s: r: x:company t:null-24] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2024-03-17 20:05:34.075 INFO  (searcherExecutor-13-thread-1-processing-company null-24) [c: s: r: x:company t:null-24] o.a.s.c.SolrCore Registered new searcher autowarm time: 89 ms
+2024-03-17 20:05:34.805 INFO  (qtp1415289182-22-null-24) [c: s: r: x:company t:null-24] o.a.s.u.p.LogUpdateProcessorFactory webapp=/solr path=/update params={waitSearcher=true&commit=true&softCommit=false&wt=javabin&version=2}{commit=} 0 8808
+2024-03-17 20:05:53.098 INFO  (qtp1415289182-24-null-25) [c: s: r: x:company t:null-25] o.a.s.c.S.Request webapp=/solr path=/select params={q=address:*deneme*+OR+phone:*deneme*+OR+email:*deneme*+OR+status:*deneme*&start=0&rows=0&wt=javabin&version=2} hits=2 status=0 QTime=359
+2024-03-17 20:05:53.195 INFO  (qtp1415289182-22-null-26) [c: s: r: x:company t:null-26] o.a.s.c.S.Request webapp=/solr path=/select params={q=address:*deneme*+OR+phone:*deneme*+OR+email:*deneme*+OR+status:*deneme*&start=0&rows=2&wt=javabin&version=2} hits=2 status=0 QTime=81
+2024-03-17 20:06:24.913 INFO  (qtp1415289182-24-null-27) [c: s: r: x:company t:null-27] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=117
+2024-03-17 20:06:25.510 INFO  (qtp1415289182-22-null-28) [c: s: r: x:company t:null-28] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=560
+2024-03-17 20:06:28.910 INFO  (qtp1415289182-24-null-29) [c: s: r: x:company t:null-29] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=0&wt=javabin&version=2} hits=10 status=0 QTime=5
+2024-03-17 20:06:28.922 INFO  (qtp1415289182-22-null-30) [c: s: r: x:company t:null-30] o.a.s.c.S.Request webapp=/solr path=/select params={q=status:*ACTIVE*&start=0&rows=10&wt=javabin&version=2} hits=10 status=0 QTime=4
