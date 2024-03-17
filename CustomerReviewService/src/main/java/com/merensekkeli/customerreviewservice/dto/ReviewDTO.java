@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public record ReviewDTO(
     String customerUsername,
-    String companyId, //TODO: change to company name, for now it's just a company id
+    String companyId,
     EnumRate rate,
     String comment
 ) {

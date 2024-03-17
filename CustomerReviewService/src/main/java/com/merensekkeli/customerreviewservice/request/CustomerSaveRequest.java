@@ -13,6 +13,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+
 public class CustomerSaveRequest {
 
     @NotBlank(message = "Name is mandatory")

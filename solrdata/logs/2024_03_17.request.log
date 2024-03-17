@@ -1,0 +1,6 @@
+192.168.65.1 - - [17/Mar/2024:09:59:22 +0000] "GET /solr/company/select?q=*%3A*&start=0&rows=0&wt=javabin&version=2 HTTP/1.1" 200 114
+192.168.65.1 - - [17/Mar/2024:09:59:22 +0000] "GET /solr/company/select?q=*%3A*&start=0&rows=10&wt=javabin&version=2 HTTP/1.1" 200 2037
+192.168.65.1 - - [17/Mar/2024:09:59:30 +0000] "GET /solr/company/select?q=status%3A*ACTIVE*&start=0&rows=0&wt=javabin&version=2 HTTP/1.1" 200 126
+192.168.65.1 - - [17/Mar/2024:09:59:30 +0000] "GET /solr/company/select?q=status%3A*ACTIVE*&start=0&rows=10&wt=javabin&version=2 HTTP/1.1" 200 2049
+192.168.65.1 - - [17/Mar/2024:10:32:35 +0000] "GET /solr/company/select?q=*%3A*&start=0&rows=0&wt=javabin&version=2 HTTP/1.1" 200 114
+192.168.65.1 - - [17/Mar/2024:10:32:35 +0000] "GET /solr/company/select?q=*%3A*&start=0&rows=10&wt=javabin&version=2 HTTP/1.1" 200 2038

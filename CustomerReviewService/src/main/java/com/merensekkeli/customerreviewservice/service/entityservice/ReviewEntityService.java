@@ -38,4 +38,8 @@ public class ReviewEntityService extends BaseEntityService<Review, ReviewReposit
     public boolean existsByCustomerIdAndProductId(Long customerId, String companyId) {
         return getRepository().existsByCustomerIdAndCompanyId(customerId, companyId);
     }
+
+    public List<Review> findByCustomerId(Long userId) {
+        return getRepository().findByCustomerId(userId);
+    }
 }

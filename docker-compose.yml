@@ -3,10 +3,11 @@ services:
   postgres:
     image: postgres:latest
     environment:
-      POSTGRES_USER: erensekkeli
-      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: n11-db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
     volumes:
-      - postgre_db:/var/lib/postgresql/data
+      - postgre_n11_db:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5433:5432"
@@ -55,7 +56,7 @@ services:
       - KAFKA_CREATE_TOPICS=logTopic:1:1
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://host.docker.internal:9092
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -73,6 +74,6 @@ services:
       - kafka
 
 volumes:
-  postgre_db:
+  postgre_n11_db:
     driver: local
   solrdata:

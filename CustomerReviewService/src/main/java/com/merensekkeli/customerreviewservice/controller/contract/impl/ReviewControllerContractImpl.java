@@ -95,4 +95,14 @@ public class ReviewControllerContractImpl implements ReviewControllerContract {
         kafkaProducerService.sendMessage("infoLog", appName, "Review deleted with id: " + id);
         log.info("Review deleted with id: {}", id);
     }
+
+    @Override
+    public List<ReviewDTO> getReviewsByUserId(Long userId) {
+        List<Review> reviewList = reviewEntityService.findByCustomerId(userId);
+        log.info("Reviews found with user id: {}", userId);
+        return reviewList.stream().map(userReview1 ->{
+            Customer customer = customerEntityService.findByIdWithControl(userReview1.getCustomerId());
+            return ReviewMapper.INSTANCE.convertToReviewDTO(userReview1, customer);
+        }).toList();
+    }
 }
